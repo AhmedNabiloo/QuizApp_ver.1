@@ -1,0 +1,45 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">IQ Quiz</string>
+    <string name="name">Type your name here</string>
+    <string name="question_1_title">Question 1:</string>
+    <string name="question_1_text">Which of the following can be arranged into a 5-letter English word?</string>
+    <string name="question_1_answer_a">H R G S T</string>
+    <string name="question_1_answer_b">T O O M T </string>
+    <string name="question_1_answer_c">R I L S A</string>
+    <string name="question_2_title">Question 2:</string>
+    <string name="question_2_text">Which number should come next in the pattern?</string>
+    <string name="question_2_text_2">29, 27, 24, 20</string>
+    <string name="question_2_answer_a">15</string>
+    <string name="question_2_answer_b">16</string>
+    <string name="question_2_answer_c">17</string>
+    <string name="question_3_title">Question 3:</string>
+    <string name="question_3_text">Which number best completes the analogy?</string>
+    <string name="question_3_text_2">8:4 as 10:</string>
+    <string name="question_3_answer_a">3</string>
+    <string name="question_3_answer_b">5</string>
+    <string name="question_3_answer_c">7</string>
+    <string name="question_4_title">Question 4:</string>
+    <string name="question_4_text">Forest is to tree as tree is to ?</string>
+    <string name="question_4_answer_a">Plant</string>
+    <string name="question_4_answer_b">Branch</string>
+    <string name="question_4_answer_c">Leaf</string>
+    <string name="question_5_title">Question 5:</string>
+    <string name="question_5_text">Which of the following figures is the odd one out?</string>
+    <string name="question_5_answer_a">A</string>
+    <string name="question_5_answer_b">B</string>
+    <string name="question_5_answer_c">C</string>
+    <string name="question_5_answer_d">D</string>
+    <string name="results_button">Results</string>
+    <string name="try_again_button">Try Again!</string>
+    <string name="share_button">Share</string>
+    <string name="results_message_score">Your result is: <xliff:g id="totalScore" example="60">%s</xliff:g></string>
+    <string name="results_message_thank_you">Thank you  <xliff:g id="name" example="Adam">%s</xliff:g></string>
+    <string name="using_app">For using IQ Quiz App </string>
+    <string name="toast_not_answer_1">You did not answer question 1</string>
+    <string name="toast_not_answer_2">You did not answer question 2</string>
+    <string name="toast_not_answer_3">You did not answer question 3</string>
+    <string name="toast_not_answer_4">You did not answer question 4</string>
+    <string name="toast_not_answer_5">You did not answer question 5</string>
+    <string name="share_message">My results from IQ Quiz App </string>
+
+</resources>
