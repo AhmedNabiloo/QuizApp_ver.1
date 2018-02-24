@@ -26,9 +26,7 @@ import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-
     String resultsMessage = "";
-
 
     @Override
 
@@ -38,8 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        // hide try again button when the app run
-
+        // hide Try again and Share button when the app run
         Button tryAgainButton = findViewById(R.id.try_again_button);
         Button shareButton = findViewById(R.id.share_button);
 
@@ -47,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         shareButton.setVisibility(View.GONE);
 
     }
-
 
     /**
      * This method is called when the results button is clicked.
@@ -70,17 +66,22 @@ public class MainActivity extends AppCompatActivity {
         // call method to calculate question 5 score and show Toast message if user didn't answer
         int question5Score = calculateQuestion5Score();
 
+        // call method to calculate question 6 score and show Toast message if user didn't answer
+        int question6Score = calculateQuestion6Score();
+
         // int totalScore of all questions
-        int totalScore = question1Score + question2Score + question3Score + question4Score + question5Score;
+        int totalScore = question1Score + question2Score + question3Score + question4Score + question5Score + question6Score;
 
         // Call method to create Result message
         resultsMessage = createResultsMessage(totalScore);
 
+        // display result Toast message
+        Toast.makeText(this, getString(R.string.results_message_score, NumberFormat.getIntegerInstance().format(totalScore)), Toast.LENGTH_SHORT).show();
+
         // display result message
         displayResults(resultsMessage);
 
-        // hide results button and show try again button
-
+        // hide Results button and show Try again and Share button
         Button tryAgainButton = findViewById(R.id.try_again_button);
         Button resultsButton = findViewById(R.id.results_button);
         Button shareButton = findViewById(R.id.share_button);
@@ -90,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
         resultsButton.setVisibility(View.GONE);
 
     }
-
 
     /**
      * This method to calculate score of question 1
@@ -107,27 +107,15 @@ public class MainActivity extends AppCompatActivity {
         boolean isCheckedB = question1AnswerB.isChecked();
         boolean isCheckedC = question1AnswerC.isChecked();
 
-        // get 0 points for wrong answer
-
-        if (isCheckedA) {
-            return 0;
-        }
-
         // get 20 points for right answer
-
-        if ((isCheckedB) && (isCheckedC)) {
+        if (isCheckedB && isCheckedC && !isCheckedA) {
             return 20;
-
             // show toast message that user didn't answer this question
-
-        }
-        if ((!isCheckedA) && (!isCheckedB) && (!isCheckedC)) {
+        } else if ((!isCheckedA) && (!isCheckedB) && (!isCheckedC)) {
             Toast.makeText(this, getString(R.string.toast_not_answer_1), Toast.LENGTH_SHORT).show();
             return 0;
-
         } else {
             return 0;
-
         }
     }
 
@@ -147,21 +135,16 @@ public class MainActivity extends AppCompatActivity {
         boolean isCheckedC = question2AnswerC.isChecked();
 
         // get 20 points for right answer
-
         if (isCheckedA) {
             return 20;
-
             // show toast message that user didn't answer this question
-
         }
         if ((!isCheckedA) && (!isCheckedB) && (!isCheckedC)) {
             Toast.makeText(this, getString(R.string.toast_not_answer_2), Toast.LENGTH_SHORT).show();
             return 0;
-
         } else {
             return 0;
         }
-
     }
 
     /**
@@ -180,21 +163,16 @@ public class MainActivity extends AppCompatActivity {
         boolean isCheckedC = question3AnswerC.isChecked();
 
         // get 20 points for right answer
-
         if (isCheckedB) {
             return 20;
-
             // show toast message that user didn't answer this question
-
         }
         if ((!isCheckedA) && (!isCheckedB) && (!isCheckedC)) {
             Toast.makeText(this, getString(R.string.toast_not_answer_3), Toast.LENGTH_SHORT).show();
             return 0;
-
         } else {
             return 0;
         }
-
     }
 
     /**
@@ -213,21 +191,16 @@ public class MainActivity extends AppCompatActivity {
         boolean isCheckedC = question4AnswerC.isChecked();
 
         // get 20 points for right answer
-
         if (isCheckedC) {
             return 20;
-
             // show toast message that user didn't answer this question
-
         }
         if ((!isCheckedA) && (!isCheckedB) && (!isCheckedC)) {
             Toast.makeText(this, getString(R.string.toast_not_answer_4), Toast.LENGTH_SHORT).show();
             return 0;
-
         } else {
             return 0;
         }
-
     }
 
     /**
@@ -248,13 +221,10 @@ public class MainActivity extends AppCompatActivity {
         boolean isCheckedD = question5AnswerD.isChecked();
 
         // get 20 points for right answer
-
         if (isCheckedC) {
             return 20;
         }
-
         // show toast message that user didn't answer this question
-
         if ((!isCheckedA) && (!isCheckedB) && (!isCheckedC) && (!isCheckedD)) {
             Toast.makeText(this, getString(R.string.toast_not_answer_5), Toast.LENGTH_SHORT).show();
             return 0;
@@ -263,6 +233,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method to calculate score of question 6
+     *
+     * @return question6Score
+     */
+
+    private int calculateQuestion6Score() {
+
+        EditText question6Answer = findViewById(R.id.question_6_answer);
+        String answerString = question6Answer.getText().toString();
+
+        // show toast message that user didn't answer this question
+        if (answerString.equals("")) {
+            Toast.makeText(this, getString(R.string.toast_not_answer_6), Toast.LENGTH_SHORT).show();
+            return 0;
+        }
+
+        int answerInt = Integer.parseInt(answerString);
+
+        // get 20 points for right answer
+        if (answerInt == 125) {
+            return 20;
+        } else {
+            return 0;
+        }
+    }
 
     /**
      * this method create results message
@@ -274,52 +270,39 @@ public class MainActivity extends AppCompatActivity {
     private String createResultsMessage(int totalScore) {
         EditText nameField = findViewById(R.id.name_field);
         String name = nameField.getText().toString();
-        String resultsMessage = getString(R.string.results_message_score, NumberFormat.getIntegerInstance().format(totalScore)) + "/100";
+        String resultsMessage = getString(R.string.results_message_score, NumberFormat.getIntegerInstance().format(totalScore)) + "/120";
         resultsMessage += "\n" + getString(R.string.results_message_thank_you, name);
         resultsMessage += "\n" + getString(R.string.using_app);
         return resultsMessage;
     }
-
 
     /**
      * This method displays the given results on the screen.
      */
 
     private void displayResults(String results) {
-
         TextView resultsTextView = findViewById(R.id.results_text_view);
-
         resultsTextView.setText(results);
-
-
     }
-
 
     /**
      * This method is called when the share button is clicked.
      */
 
     public void shareResults(View view) {
-
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, resultsMessage);
         sendIntent.setType("text/plain");
         startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.share_message)));
-
     }
-
 
     /**
      * This method is called when the Try again button is clicked.
      */
 
     public void resetAnswers(View view) {
-
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-
     }
-
-
 }

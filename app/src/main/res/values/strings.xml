@@ -29,6 +29,10 @@
     <string name="question_5_answer_b">B</string>
     <string name="question_5_answer_c">C</string>
     <string name="question_5_answer_d">D</string>
+    <string name="question_6_title">Question 6:</string>
+    <string name="question_6_text">Please enter the missing number?</string>
+    <string name="question_6_text_2">4, 5, 8, 17, 44, ?</string>
+    <string name="type_answer">Type your answer here</string>
     <string name="results_button">Results</string>
     <string name="try_again_button">Try Again!</string>
     <string name="share_button">Share</string>
@@ -40,6 +44,7 @@
     <string name="toast_not_answer_3">You did not answer question 3</string>
     <string name="toast_not_answer_4">You did not answer question 4</string>
     <string name="toast_not_answer_5">You did not answer question 5</string>
+    <string name="toast_not_answer_6">You did not answer question 6</string>
     <string name="share_message">My results from IQ Quiz App </string>
 
 </resources>
