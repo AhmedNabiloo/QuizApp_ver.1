@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
 
+import android.text.TextUtils;
 import android.view.View;
 
 import android.widget.Button;
@@ -245,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
         String answerString = question6Answer.getText().toString();
 
         // show toast message that user didn't answer this question
-        if (answerString.equals("")) {
+        if (TextUtils.isEmpty(answerString)) {
             Toast.makeText(this, getString(R.string.toast_not_answer_6), Toast.LENGTH_SHORT).show();
             return 0;
         }
@@ -295,6 +296,9 @@ public class MainActivity extends AppCompatActivity {
         sendIntent.putExtra(Intent.EXTRA_TEXT, resultsMessage);
         sendIntent.setType("text/plain");
         startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.share_message)));
+        if (sendIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(sendIntent);
+        }
     }
 
     /**
